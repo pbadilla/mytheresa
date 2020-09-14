@@ -1,10 +1,12 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
- 
+import App from "./app";
+
 ReactDOM.render(
-    <p>Hello world</p>,
+    <App/>,
     document.getElementById('app')
 );
- 
+
 if (module.hot) {
   module.hot.accept();
 }
