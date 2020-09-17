@@ -1,0 +1,26 @@
+// SASS variable for media query breakpoint
+$breakpoint-desktop: 992px;
+
+// Resetting default styles
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+// Fix for jumping arrows
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+}
+
+.carousel {
+  position: relative;
+}
+
+
+
+
+

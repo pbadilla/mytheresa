@@ -25,20 +25,12 @@ module.exports = {
         }
       },
       {
-        test: /\.(scss|sass|css)$/,
+        test: /\.s?css$/,
         exclude: /node_modules/,
-        loaders: [
+        use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: true,
-              importLoaders: 1,
-              localIdentName: '[local]___[hash:base64:5]'
-            }
-          },
-        'sass-loader',
+          "css-loader",
+          "sass-loader"
         ]
       },
       {
@@ -48,6 +40,16 @@ module.exports = {
           loader: 'html-loader',
           options: {minimize: true}
         }
+      },
+      {
+        test: /fonts[\\\/].+\.(otf|eot|svg|ttf|woff|woff2)$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name][hash].[ext]'
+          }
+        },
       }
     ]
   },
@@ -56,13 +58,15 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
     new HtmlWebpackPlugin({
       template: SRC_DIR + '/index.html',
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+      filename: 'styles.css',
     })
   ],
   devServer: {
