@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { getMovies } from '../../redux/actions';
 
 import Arrow from '../common/arrows';
@@ -9,17 +9,18 @@ import Slides from '../common/slides';
 
 import './Carousel.scss';
 
-const Carousel = ({ kind }) => {
+const Carousel = ({ kind, indexCarousel }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [movies, setMovies] = useState([]);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setMovies(dispatch(getMovies(kind)));
+    dispatch(getMovies(kind));
   }, []);
 
-
+  const moviesList = useSelector(state => state.movies.listMovies[indexCarousel]);
+  const slides = moviesList;
 
   function goToSlide(index) {
     setActiveIndex(index);
@@ -27,15 +28,12 @@ const Carousel = ({ kind }) => {
 
   function goToPrevSlide(e) {
     e.preventDefault();
-
     let index = activeIndex;
-    let { slides } = this.props;
     let slidesLength = slides.length;
     if (index < 1) {
       index = slidesLength;
     }
     --index;
-
     setActiveIndex(index);
   }
 
@@ -43,36 +41,37 @@ const Carousel = ({ kind }) => {
     e.preventDefault();
 
     let index = activeIndex;
-    let { slides } = this.props;
     let slidesLength = slides.length - 1;
 
     if (index === slidesLength) {
       index = -1;
     }
-
     ++index;
-
     setActiveIndex(index);
   }
 
-
   return (
     <>
-      <div className="carousel">
+      <section className={`carousel-container carousel-kind-${indexCarousel}`}>
         <h2>{kind}</h2>
-        <Arrow />
+        <section className="carousel-container-slider">
+          <Arrow direction="left" onClickFunction={event => goToPrevSlide(event)} />
+          <section className="carousel-images">
+            {slides && <Slides
+              activeIndex={activeIndex}
+              content={moviesList}
+              index={imageIndex} />
+            }
 
-        <Slides
-          activeIndex={1}
-          index={1} />
-
-        <Indicator
-          activeIndex={activeIndex}
-          index={1}
-        />
-
-        <Arrow />
-      </div>
+            {slides && <Indicator
+              activeIndex={activeIndex}
+              content={moviesList}
+              index={imageIndex}
+            />}
+          </section>
+          <Arrow direction="right" onClickFunction={event => goToNextSlide(event)} />
+        </section>
+      </section>
     </>
   )
 }

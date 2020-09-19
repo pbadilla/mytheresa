@@ -1,20 +1,17 @@
 import React from "react";
 
 import './Arrows.scss';
+import arrowRight from '../../../../public/images/right_arrow.svg';
+import arrowLeft from '../../../../public/images/left_arrow.svg';
 
-const Arrow = ({direction}) => {
-  function onClick() {
-    console.log('Clicka');
-  }
-  
+const Arrow = ({ direction, onClickFunction }) => {
   return (
-    <a
-        href="#"
-        className="carousel__arrow carousel__arrow--left"
-        onClick={onClick}
-      >
-        <span className={direction} />
-      </a>
+    <a href="#" className={`arrow arrow-${direction}`} onClick={onClickFunction}>
+      {direction === 'left'
+        ? <img src={arrowLeft} alt="" />
+        : <img src={arrowRight} alt="" />
+      }
+    </a>
   );
 };
 

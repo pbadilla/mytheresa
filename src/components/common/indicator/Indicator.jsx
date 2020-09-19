@@ -3,18 +3,20 @@ import React from "react";
 
 import './Indicator.scss';
 
-const Indicator = ({activeIndex,index}) => {
-    return (
-    <ul className='carousel__indicators'>
-      <li>
+const Indicator = ({ activeIndex, content }) => {
+  return (
+    <ul className='indicators'>
+      {content.map((movie, index) => (
+        <li key={movie.id}>
           <a
-          className={
+            className={
               index == activeIndex
-              ? "carousel__indicator carousel__indicator--active"
-              : "carousel__indicator"
-          }
+                ? "indicator indicator--active"
+                : "indicator"}
+            title={movie.original_title}
           />
-      </li>
+        </li>
+      ))}
     </ul>
   )
 };

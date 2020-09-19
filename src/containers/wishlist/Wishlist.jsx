@@ -1,11 +1,15 @@
 import React from "react";
 
-const Wishlist = () => {
+import Layout from '../../components/common/layout';
+
+const WishList = () => {
   return (
-    <ul>
-      <li>WishList</li>
-    </ul>
+    <Layout>
+      <ul>
+        <li>WishList</li>
+      </ul>
+    </Layout>
   );
 };
 
-export default Wishlist;
+export default WishList;

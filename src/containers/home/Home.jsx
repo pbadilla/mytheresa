@@ -6,13 +6,14 @@ import Carousel from "../../components/carousel";
 import './home.scss';
 
 const Home = props => {
+
   return (
     <div>
       <Layout>
         <div className="contentWrapper">
-          <Carousel kind={'top_rated'} index={1} />
-          <Carousel kind={'popular'} index={2} />
-          <Carousel kind={'upcoming'} index={3} />
+          <Carousel kind={'top_rated'} indexCarousel={0} />
+          <Carousel kind={'popular'} indexCarousel={1} />
+          <Carousel kind={'upcoming'} indexCarousel={2} />
         </div>
       </Layout>
     </div>

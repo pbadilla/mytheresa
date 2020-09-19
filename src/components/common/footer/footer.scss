@@ -2,10 +2,33 @@ $navy: #001e38;
 $blue: #5867ec;
 $white: #FFF;
 
+
+
 footer {
   background-color: $blue;
+  display: flex;
+  align-items: center;
   color: $white;
+  flex-direction: row;
   font-weight: bold;
   font-size: 1rem;
+  justify-content: space-between;
   padding: .5rem;
+  a {
+    color: $white;
+    text-align: right;
+  }
+  .logo {
+    width: 100px;
+  }
+  .favourites-link {
+    a {
+      align-items: center;
+      display: flex;
+      img {
+        margin-right: 5px;
+        width: 30px;
+      }
+    }
+  }
 }

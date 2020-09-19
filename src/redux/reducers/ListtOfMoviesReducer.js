@@ -5,7 +5,7 @@ import {
 } from '../actions';
 
 const initialState = {
-    movies: [],
+    listMovies: [],
     loading: false,
     error: null
 }
@@ -25,16 +25,15 @@ export default function (
             };
         case FETCH_MOVIES_SUCCESS:
             return {
-                ...state,
                 loading: false,
-                movies: payload
+                listMovies: [...state.listMovies, payload.movies]
             };
         case FETCH_MOVIES_FAILURE:
             return {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                movies: []
+                movie: {}
             };
         default:
             return state;

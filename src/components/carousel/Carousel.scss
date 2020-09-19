@@ -1,26 +1,65 @@
-// SASS variable for media query breakpoint
 $breakpoint-desktop: 992px;
 
-// Resetting default styles
 ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
 
-// Fix for jumping arrows
 .carousel-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 210px;
+
+  h2 {
+    font-variant: small-caps;
+  }
+
+  & > .carousel-container-slider {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    & > .carousel-images {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
 }
 
+.carousel-kind-0 {
+  color: orange;
+  small {
+    color: orange;
+    text-decoration: dashed;
+  }
+  .indicator {
+    background-color:orange;
+  }
+}
+
+.carousel-kind-1 {
+  color: blue;
+  small {
+    color: blue;
+    text-decoration: dashed;
+  }
+  .indicator {
+    background-color:blue;
+  }
+}
+.carousel-kind-2 {
+  color: green;
+  small {
+    color: green;
+    text-decoration: dashed;
+  }
+  .indicator {
+    background-color:green;
+  }
+}
 .carousel {
   position: relative;
 }
-
-
-
-
-

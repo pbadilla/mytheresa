@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: DIST_DIR,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -38,7 +38,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'html-loader',
-          options: {minimize: true}
+          options: { minimize: true }
         }
       },
       {
@@ -50,6 +50,27 @@ module.exports = {
             name: 'fonts/[name][hash].[ext]'
           }
         },
+      },
+      {
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       }
     ]
   },
@@ -71,7 +92,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: DIST_DIR,
-    hot: true,
-    port: 3000
+    port: 9000,
+    historyApiFallback: true
   }
 };

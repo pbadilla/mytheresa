@@ -1,21 +1,25 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 
 import './Slides.scss';
 
-const Slides = ({activeIndex, index}) => {
+const Slides = ({ activeIndex, content }) => {
+
   return (
-    <ul className='carousel__slides'>
-      <li
-        className={
-          index == activeIndex
-            ? "carousel__slide carousel__slide--active"
-            : "carousel__slide"
-        }
-      >
-        <p className="carousel-slide__content">content</p>
-      </li>
+    <ul className='slide-container'>
+      {content.map((movie, index) => (
+        <Link to={`/movie/${movie.id}`} key={movie.id} title={movie.original_title} >
+          <li
+            key={movie.id}
+            id={movie.id}
+            className={index == activeIndex ? "slide slide-active" : "slide"}>
+            <img src={`http://image.tmdb.org/t/p/w185/${movie.backdrop_path}`} />
+            <small className="slide-content">{movie.original_title}</small>
+          </li>
+        </Link>
+      ))}
     </ul>
-    );
- };
+  );
+};
 
 export default Slides;

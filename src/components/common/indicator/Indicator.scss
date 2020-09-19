@@ -1,4 +1,4 @@
-.carousel__indicators {
+.indicators {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -11,7 +11,7 @@
     }
   }
   
-  .carousel__indicator {
+  .indicator {
     display: block;
     width: 24px;
     height: 3px;

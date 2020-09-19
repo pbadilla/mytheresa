@@ -1,58 +1,43 @@
 import {
-  FETCH_MOVIE_INITIATED,
-  FETCH_MOVIE_FAILED,
-  FETCH_MOVIE_SUCCEEDED,
-  MOVIE_CLICKED
-} from "../actions";
+  FETCH_MOVIE_BEGIN,
+  FETCH_MOVIE_SUCCESS,
+  FETCH_MOVIE_FAILURE
+} from '../actions';
 
-const INITIAL_STATE = {
+const initialState = {
   movie: null,
-  credits: null,
-  videos: null,
-  images: null,
-  clickedMovieId: "",
-  isError: false,
-  isLoading: false
-};
+  kind: null,
+  loading: false,
+  error: null
+}
 
-export function movieReducer (state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case FETCH_MOVIE_INITIATED:
+export default function (
+  state = initialState,
+  action
+) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case FETCH_MOVIE_BEGIN:
       return {
         ...state,
-        isError: false,
-        isLoading: true
+        loading: true,
+        error: null
       };
-
-    case FETCH_MOVIE_FAILED:
+    case FETCH_MOVIE_SUCCESS:
+      return {
+        loading: false,
+        kind: payload.kind,
+        movie: payload.movie
+      };
+    case FETCH_MOVIE_FAILURE:
       return {
         ...state,
-        isError: true,
-        isLoading: false
+        loading: false,
+        error: action.payload.error,
+        movie: {}
       };
-
-    case FETCH_MOVIE_SUCCEEDED:
-      return {
-        ...state,
-        movie: action.payload,
-        credits: { ...action.payload.credits },
-        videos: { ...action.payload.videos },
-        images: { ...action.payload.images },
-        isError: false,
-        isLoading: false
-      };
-
-    case MOVIE_CLICKED:
-      return {
-        ...state,
-        clickedMovieId: action.payload
-      };
-
     default:
       return state;
   }
-};
-
-export const getMovie = state => state.movies;
-export const getMoviePending = state => state.pending;
-export const getMovieError = state => state.error;
+}
