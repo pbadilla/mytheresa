@@ -1,15 +1,10 @@
-import {
-  PUT_MOVIE_WISHLIST
-} from '../actions';
+import { PUT_MOVIE_WISHLIST } from "../actions";
 
 const initialState = {
-  movie: null
-}
+  wishList: [],
+};
 
-export default function (
-  state = initialState,
-  action
-) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -17,8 +12,8 @@ export default function (
       return {
         ...state,
         loading: true,
-        movie: payload,
-        error: null
+        wishlist: [...state.wishList, payload.movieName],
+        error: null,
       };
     default:
       return state;

@@ -1,20 +1,17 @@
 import {
   FETCH_MOVIE_BEGIN,
   FETCH_MOVIE_SUCCESS,
-  FETCH_MOVIE_FAILURE
-} from '../actions';
+  FETCH_MOVIE_FAILURE,
+} from "../actions";
 
 const initialState = {
   movie: null,
   kind: null,
   loading: false,
-  error: null
-}
+  error: null,
+};
 
-export default function (
-  state = initialState,
-  action
-) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -22,20 +19,20 @@ export default function (
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     case FETCH_MOVIE_SUCCESS:
       return {
         loading: false,
         kind: payload.kind,
-        movie: payload.movie
+        movie: payload.movie,
       };
     case FETCH_MOVIE_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload.error,
-        movie: {}
+        movie: {},
       };
     default:
       return state;

@@ -1,4 +1,11 @@
 .wishListWrapper {
-    min-height: 300px;
-    padding: 1rem;
+  min-height: 300px;
+  padding: 1rem;
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+  }
 }
