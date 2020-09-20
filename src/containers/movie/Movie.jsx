@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovie, putMovieWishList } from "../../redux/actions";
 
+import { Buttonback } from "../../components/common/buttons/button_back/ButtonBack";
 import Image from "../../components/common/image";
 import Layout from "../../components/common/layout";
 
@@ -33,6 +34,7 @@ const Movie = ({ match }) => {
     <>
       {movieSelected && (
         <Layout>
+          <Buttonback />
           <div className="movieWrapper">
             <section className="imageMovie ">
               <figure className="addWishlist">
