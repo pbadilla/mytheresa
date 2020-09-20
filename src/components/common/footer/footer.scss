@@ -1,8 +1,6 @@
 $navy: #001e38;
 $blue: #5867ec;
-$white: #FFF;
-
-
+$white: #fff;
 
 footer {
   background-color: $blue;
@@ -13,7 +11,8 @@ footer {
   font-weight: bold;
   font-size: 1rem;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
+  width: 100%;
   a {
     color: $white;
     text-align: right;
@@ -22,6 +21,7 @@ footer {
     width: 100px;
   }
   .favourites-link {
+    margin-right: 2rem;
     a {
       align-items: center;
       display: flex;

@@ -49,6 +49,7 @@
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "./node_modules/.bin/cypress open",
     "start": "npm run startWebpack",
     "startWebpack": "./node_modules/.bin/webpack-dev-server --hot"
   },

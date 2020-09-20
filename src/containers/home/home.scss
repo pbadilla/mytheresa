@@ -1,4 +1,28 @@
+@import "../../styles/mixins";
+
 .contentWrapper {
-    min-height: 300px;
-    padding: 1rem;
+  min-height: 300px;
+  padding: 1rem;
+  overflow-x: hidden;
+  width: 75%;
+
+  @include xsm {
+    width: 40%;
+  }
+
+  @include xsM {
+    width: 75%;
+  }
+
+  @include sm {
+    width: 55%;
+  }
+
+  @include lg {
+    width: 85%;
+  }
+
+  @include xl() {
+    width: 97%;
+  }
 }
