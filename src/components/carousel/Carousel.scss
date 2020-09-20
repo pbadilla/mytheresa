@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker:400);
+@import url(https://fonts.googleapis.com/css?family=Lora:400italic);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:700);
+
 $breakpoint-desktop: 992px;
 
 ul {
@@ -31,33 +35,37 @@ ul {
 
 .carousel-kind-0 {
   color: orange;
+  font-family: Permanent Marker, sans-serif;
   small {
     color: orange;
     text-decoration: dashed;
   }
   .indicator {
-    background-color:orange;
+    background-color: orange;
   }
 }
 
 .carousel-kind-1 {
+  font-family: Lora, serif;
   color: blue;
   small {
     color: blue;
     text-decoration: dashed;
   }
   .indicator {
-    background-color:blue;
+    background-color: blue;
   }
 }
 .carousel-kind-2 {
   color: green;
+  font-family: Roboto Condensed, sans-serif;
+
   small {
     color: green;
     text-decoration: dashed;
   }
   .indicator {
-    background-color:green;
+    background-color: green;
   }
 }
 .carousel {

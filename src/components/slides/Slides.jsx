@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import Image from "../../components/common/image";
+
 import "./Slides.scss";
 
 const Slides = ({ activeIndex, content, kindMovie }) => {
@@ -17,7 +19,7 @@ const Slides = ({ activeIndex, content, kindMovie }) => {
             id={movie.id}
             className={index == activeIndex ? "slide slide-active" : "slide"}
           >
-            <img
+            <Image
               src={`http://image.tmdb.org/t/p/w185/${movie.backdrop_path}`}
             />
             <small className="slide-content">{movie.original_title}</small>

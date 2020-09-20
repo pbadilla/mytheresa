@@ -4,8 +4,9 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { getMovies } from "../../redux/actions";
 
 import Arrow from "../common/arrows";
-import Indicator from "../common/indicator";
-import Slides from "../common/slides";
+import Indicator from "../indicator";
+import Loader from "../loading";
+import Slides from "../slides";
 
 import "./Carousel.scss";
 
@@ -23,6 +24,8 @@ const Carousel = ({ kind, indexCarousel }) => {
     (state) => state.movies.listMovies[indexCarousel]
   );
   const slides = moviesList;
+
+  const LoadedList = useSelector((state) => state.movies.loading);
 
   function goToSlide(index) {
     setActiveIndex(index);
@@ -62,13 +65,15 @@ const Carousel = ({ kind, indexCarousel }) => {
             onClickFunction={(event) => goToPrevSlide(event)}
           />
           <section className="carousel-images">
-            {slides && (
+            {slides ? (
               <Slides
                 activeIndex={activeIndex}
                 content={moviesList}
                 index={imageIndex}
                 kindMovie={kind}
               />
+            ) : (
+              <Loader />
             )}
 
             {slides && (
@@ -76,6 +81,7 @@ const Carousel = ({ kind, indexCarousel }) => {
                 activeIndex={activeIndex}
                 content={moviesList}
                 index={imageIndex}
+                onClickFunction={(event) => goToSlide(event)}
               />
             )}
           </section>

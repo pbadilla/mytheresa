@@ -1,8 +1,11 @@
 $breakpoint-desktop: 992px;
 
 .slide-container {
-  max-height: 250px;
+  height: 160px;
   text-align: center;
+  a {
+    text-decoration: none;
+  }
 }
 
 .slide {
@@ -10,6 +13,7 @@ $breakpoint-desktop: 992px;
   margin-left: auto;
   display: none;
   max-width: 900px;
+  height: 150px;
   list-style-type: none;
   text-align: center;
 
@@ -27,19 +31,17 @@ $breakpoint-desktop: 992px;
 }
 
 .slide-content {
-    margin-top: 19px;
-    font-size: 16px;
-    text-decoration: none;
-    color: #363636;
-  
-    @media (max-width: $breakpoint-desktop - 1px) {
-      font-size: 18px;
-    }
+  margin-top: 19px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #363636;
+
+  @media (max-width: $breakpoint-desktop - 1px) {
+    font-size: 18px;
   }
-  
+}
 
 .carousel-slide__source {
   font-style: italic;
   color: #888;
 }
-    
